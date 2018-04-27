@@ -1,9 +1,10 @@
 library(shiny)
+library(shinydashboard)
 
-fluidPage(
-  titlePanel("FDA Adverse Event Data"),
-  sidebarLayout(
-    sidebarPanel = sidebarPanel(
+
+shinyUI(dashboardPage(
+    dashboardHeader(title = "FDA Adverse Event Data"),
+    dashboardSidebar(
       dateInput(inputId = "reportDateStart", 
                 label = "Minimum FDA Report Date", 
                 value = "2015-01-01", 
@@ -18,7 +19,7 @@ fluidPage(
                      label = "Patient Outcome",
                      choices = NULL)
     ),
-    mainPanel = mainPanel(
+    dashboardBody(
       fluidRow(
         column(6, plotOutput("bysex"))
       )
